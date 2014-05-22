@@ -2,6 +2,7 @@
 using System.Text;
 using Framework.Common;
 using Framework.Infrastructure;
+using HtmlAgilityPack;
 
 namespace Framework.Services
 {
@@ -29,7 +30,6 @@ namespace Framework.Services
 
             if (!Authenticated)
                 throw new InvalidCredentialException();
-
         }
 
         private bool Authenticate()
@@ -80,6 +80,16 @@ namespace Framework.Services
             content = response.GetResponseStream().ReadAsString();
 
             return content.Contains("https://live.xbox.com/Account/Signout");
+        }
+
+        protected HtmlDocument DownloadDocumentNode(string requestUri)
+        {
+            var pageData = WebAgent.GetString(requestUri);
+
+            var document = new HtmlDocument();
+            document.LoadHtml(pageData);
+
+            return document;
         }
     }
 }

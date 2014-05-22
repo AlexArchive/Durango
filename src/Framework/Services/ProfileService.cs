@@ -1,6 +1,4 @@
-﻿using Framework.Infrastructure;
-using Framework.Models;
-using HtmlAgilityPack;
+﻿using Framework.Models;
 using System.Collections.Generic;
 
 namespace Framework.Services
@@ -52,15 +50,6 @@ namespace Framework.Services
             return profile;
         }
 
-        private HtmlDocument DownloadDocumentNode(string requestUri)
-        {
-            var pageData = WebAgent.GetString(requestUri);
-
-            var document = new HtmlDocument();
-            document.LoadHtml(pageData);
-
-            return document;
-        }
 
         private static readonly Dictionary<string, int> _starValues
             = new Dictionary<string, int>  {
