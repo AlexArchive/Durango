@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Authentication;
+using System.Text;
 using Framework.Common;
 using Framework.Infrastructure;
 
@@ -25,6 +26,10 @@ namespace Framework.Services
             if (Authenticated) return;
 
             Authenticated = Authenticate();
+
+            if (!Authenticated)
+                throw new InvalidCredentialException();
+
         }
 
         private bool Authenticate()
