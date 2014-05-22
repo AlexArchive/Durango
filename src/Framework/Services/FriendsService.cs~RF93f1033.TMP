@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Framework.Common;
+﻿using Framework.Common;
 using Framework.Models;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
-using Newtonsoft.Json.Linq;
 
 namespace Framework.Services
 {
@@ -18,7 +16,7 @@ namespace Framework.Services
 
         private const string BaseAddress = "https://live.xbox.com/en-US/Friends/List?Gamertag=";
 
-        public IEnumerable<Friend> GetFriendsOf(string gamertag)
+        public void GetFriendsOf(string gamertag)
         {
             EnsureAuthenticated();
 
@@ -37,12 +35,10 @@ namespace Framework.Services
             );
 
             var content = response.GetResponseStream().ReadAsString();
+            Debugger.Break();
 
-            var friendsNode = JObject.Parse(content)["Data"]["Friends"];
-            var friends = friendsNode.ToObject<IEnumerable<Friend>>();
-
-            return friends;
-
+            var model= JsonConvert.DeserializeObject<Data>(content);
+        
         }
 
         private HtmlDocument DownloadDocumentNode(string requestUri)

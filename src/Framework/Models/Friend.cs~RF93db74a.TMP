@@ -21,4 +21,18 @@ namespace Framework.Models
         public TitleInfo TitleInfo { get; set; }
         public string RichPresence { get; set; }
     }
+
+    public class Data
+    {
+        public List<Friend> Friends { get; set; }
+        public List<object> Outgoing { get; set; }
+        public List<object> Incoming { get; set; }
+    }
+
+    public class RootObject
+    {
+        public Data Data { get; set; }
+        public bool Success { get; set; }
+        public object Diagnostics { get; set; }
+    }
 }

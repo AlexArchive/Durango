@@ -13,7 +13,8 @@ namespace Runner
         static void Main(string[] args)
         {
             var service = new FriendsService("twerkteam@yopmail.com", "teamtwerk1");
-            service.GetFriendsOf("xMurta");
+            var friends = service.GetFriendsOf("xMurta");
+
 
             Console.ReadKey();
 
