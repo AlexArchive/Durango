@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using Framework.Common;
+﻿using Framework.Common;
 using Framework.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Framework.Services
 {
@@ -53,7 +49,7 @@ namespace Framework.Services
                      }));
             }
 
-            return games.ToObject<IEnumerable<Game>>();
+            return games.ToObject<IEnumerable<Achievement>>();
         }
     }
 }

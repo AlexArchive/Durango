@@ -1,23 +1,17 @@
-﻿using System;
-using Framework.Common;
+﻿using System.Diagnostics;
 using Framework.Services;
 
 namespace Runner
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var service = new GamesService("twerkteam@yopmail.com", "teamtwerk1");
-            var games = service.GetGames("xMurta");
+            var service = new AchievementsService("twerkteam@yopmail.com", "teamtwerk1");
+            var achievements = service.GetAchievements("xMurta", "1414793383");
 
-            foreach (var game in games)
-            {
-                Console.WriteLine(game.ToStringAutomatic());
-                Console.WriteLine("---");
-            }
+            Debugger.Break();
 
-            Console.ReadKey();
         }
     }
 }

@@ -21,7 +21,9 @@ namespace Framework.Common
     {
         public static string ParseBetween(this string input, string leftWord, string rightWord)
         {
-            var pattern = new Regex(leftWord + "(?<word>.*?)" + rightWord);
+            var pattern = new Regex(
+                Regex.Escape(leftWord) + "(?<word>.*?)" + Regex.Escape(rightWord), RegexOptions.Singleline);
+
             return pattern.Match(input).Groups["word"].Value;
         }
     }

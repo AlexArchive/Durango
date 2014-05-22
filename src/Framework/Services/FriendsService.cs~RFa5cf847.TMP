@@ -26,6 +26,7 @@ namespace Framework.Services
                 docNode.SelectSingleNode("//input[@name='__RequestVerificationToken']").Attributes["value"].Value;
 
             var requestUri = BaseAddress + gamertag;
+
             var response = WebAgent.Post(
                 requestUri,
                 "__RequestVerificationToken=" + token, 
