@@ -1,6 +1,5 @@
 ﻿using Framework.Common;
 using Framework.Models;
-using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Net;
@@ -15,7 +14,6 @@ namespace Framework.Services
             : base(username, password)
         {
         }
-
 
         public IEnumerable<Friend> GetFriendsOf(string gamertag)
         {

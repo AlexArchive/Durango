@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Framework.Common;
 using Framework.Services;
 
@@ -12,12 +8,16 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            var service = new FriendsService("twerkteam@yopmail.com", "teamtwerk1");
-            var friends = service.GetFriendsOf("xMurta");
+            var service = new GamesService("twerkteam@yopmail.com", "teamtwerk1");
+            var games = service.GetGames("xMurta");
 
+            foreach (var game in games)
+            {
+                Console.WriteLine(game.ToStringAutomatic());
+                Console.WriteLine("---");
+            }
 
             Console.ReadKey();
-
         }
     }
 }
