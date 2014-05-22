@@ -12,10 +12,11 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            var service = new ProfileService();
-            var profile = service.GetProfile("LagKip");
-            Console.WriteLine(profile.ToStringAutomatic());
+            var service = new FriendsService("twerkteam@yopmail.com", "teamtwerk1");
+            service.GetFriendsOf("xMurta");
+
             Console.ReadKey();
+
         }
     }
 }

@@ -5,10 +5,14 @@ using System.Collections.Generic;
 
 namespace Framework.Services
 {
-    public sealed class ProfileService
+    public sealed class ProfileService : ServiceBase
     {
-        private readonly WebAgent _webAgent = new WebAgent();
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
+
+        public ProfileService(string username, string password) 
+            : base(username, password)
+        {
+        }
 
         public Profile GetProfile(string gamertag)
         {
@@ -50,7 +54,7 @@ namespace Framework.Services
 
         private HtmlDocument DownloadDocumentNode(string requestUri)
         {
-            var pageData = _webAgent.GetString(requestUri);
+            var pageData = WebAgent.GetString(requestUri);
 
             var document = new HtmlDocument();
             document.LoadHtml(pageData);
