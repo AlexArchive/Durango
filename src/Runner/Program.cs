@@ -7,10 +7,8 @@ namespace Runner
     {
         private static void Main()
         {
-            var client = new XboxClient("twerkteam@yopmail.com", "teamtwerk1");
-
+            var client = new XboxClient("twerkteddam@yopmail.com", "teamtwerk1");
             var friends = client.Friends.GetFriendsOf("xMurta");
-
         }
     }
 }

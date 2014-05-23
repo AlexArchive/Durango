@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Security.Authentication;
+using System.Text;
 using Framework.Common;
 using Framework.Infrastructure;
 
@@ -18,9 +20,9 @@ namespace Framework.Authentication
         public void Apply(WebAgent webAgent)
         {
             bool authenticated = Authenticate(webAgent);
-            
-            // TODO:
-            //   Handle error.
+
+            if (!authenticated)
+                throw new InvalidCredentialException();
         }
 
         private bool Authenticate(WebAgent webAgent)
@@ -56,6 +58,11 @@ namespace Framework.Authentication
 
             var response = webAgent.Post(postUrl, postContent.ToString());
             content = response.GetResponseStream().ReadAsString();
+
+            if (content.Contains("sErrTxt"))
+            {
+                return false;
+            }
 
             postUrl = content.ParseBetween("id=\"fmHF\" action=\"", "\"");
             var napVal = content.ParseBetween("id=\"NAP\" value=\"", "\"");
