@@ -10,15 +10,14 @@ namespace Framework.Services
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Details?titleId=";
 
-        public AchievementsService(string username, string password)
-            : base(username, password)
+
+        public AchievementsService(Connection connection) 
+            : base(connection)
         {
         }
 
         public IEnumerable<Achievement> GetAchievements(string gamertag, string gameId)
         {
-            EnsureAuthenticated();
-
             var content = WebAgent.GetString(BaseAddress + gameId + "&compareto=" + gamertag);
 
             var achievementsJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");

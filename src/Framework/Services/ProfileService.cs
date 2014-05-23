@@ -1,4 +1,5 @@
-﻿using Framework.Models;
+﻿using Framework.Common;
+using Framework.Models;
 using System.Collections.Generic;
 
 namespace Framework.Services
@@ -7,14 +8,15 @@ namespace Framework.Services
     {
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
 
-        public ProfileService(string username, string password) 
-            : base(username, password)
+
+        public ProfileService(Connection connection) 
+            : base(connection)
         {
         }
 
         public Profile GetProfile(string gamertag)
         {
-            var document = DownloadDocumentNode(BaseAddress + gamertag);
+            var document = WebAgent.DownloadDocumentNode(BaseAddress + gamertag);
             var docNode = document.DocumentNode;
 
             var profile = new Profile { Gamertag = gamertag };
@@ -50,7 +52,6 @@ namespace Framework.Services
             return profile;
         }
 
-
         private static readonly Dictionary<string, int> _starValues
             = new Dictionary<string, int>  {
                 {"Star Empty", 0},
@@ -59,6 +60,5 @@ namespace Framework.Services
                 {"Star ThreeQuarter", 75},
                 {"Star Full", 100}
             };
-
     }
 }

@@ -10,16 +10,15 @@ namespace Framework.Services
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Friends/List?Gamertag=";
 
-        public FriendsService(string username, string password) 
-            : base(username, password)
+
+        public FriendsService(Connection connection) 
+            : base(connection)
         {
         }
 
         public IEnumerable<Friend> GetFriendsOf(string gamertag)
         {
-            EnsureAuthenticated();
-
-            var document = DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
+            var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 
             var token =
@@ -38,7 +37,6 @@ namespace Framework.Services
             var friends = friendsNode.ToObject<IEnumerable<Friend>>();
 
             return friends;
-
         }
     }
 }

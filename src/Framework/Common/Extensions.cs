@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Framework.Infrastructure;
+using HtmlAgilityPack;
 
 namespace Framework.Common
 {
@@ -45,4 +47,18 @@ namespace Framework.Common
             return string.Join(Seperator, propertyValues);
         }
     }
+
+    public static class WebAgentExtensions
+    {
+        public static HtmlDocument DownloadDocumentNode(this WebAgent webAgent, string requestUri)
+        {
+            var pageData = webAgent.GetString(requestUri);
+
+            var document = new HtmlDocument();
+            document.LoadHtml(pageData);
+
+            return document;
+        }
+    }
+
 }

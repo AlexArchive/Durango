@@ -11,17 +11,14 @@ namespace Framework.Services
 
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Summary?compareTo=";
 
-        public GamesService(string username, string password)
-            : base(username, password)
+        public GamesService(Connection connection)
+            : base(connection)
         {
-
         }
 
         public IEnumerable<Game> GetGames(string gamertag)
         {
-            EnsureAuthenticated();
-
-            var document = DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
+            var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 
             var token =
@@ -49,7 +46,7 @@ namespace Framework.Services
                      }));
             }
 
-            return games.ToObject<IEnumerable<Achievement>>();
+            return games.ToObject<IEnumerable<Game>>();
         }
     }
 }
