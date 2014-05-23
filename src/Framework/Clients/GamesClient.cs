@@ -18,10 +18,10 @@ namespace Framework.Clients
 
         public IEnumerable<Game> GetGames(string gamertag)
         {
-            EnsureAuthenticated();
-
             var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
+
+            EnsureAuthenticated();
 
             var token =
                 docNode.SelectSingleNode("//input[@name='__RequestVerificationToken']").Attributes["value"].Value;
