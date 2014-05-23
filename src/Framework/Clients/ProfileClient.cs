@@ -56,10 +56,10 @@ namespace Framework.Clients
             new Dictionary<string, int> 
         {
             {"Star Empty", 0},
-            {"Star Quarter", 25},
-            {"Star Half", 50},
-            {"Star ThreeQuarter", 75},
-            {"Star Full", 100}
+            {"Star Quarter", 5},
+            {"Star Half", 10},
+            {"Star ThreeQuarter", 15},
+            {"Star Full", 20}
         };
     }
 }

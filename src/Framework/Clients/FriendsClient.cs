@@ -16,7 +16,7 @@ namespace Framework.Clients
         {
         }
 
-        public IEnumerable<Friend> GetFriendsOf(string gamertag)
+        public IEnumerable<Friend> GetFriends(string gamertag)
         {
             EnsureAuthenticated();
 
