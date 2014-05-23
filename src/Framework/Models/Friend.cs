@@ -2,12 +2,6 @@
 
 namespace Framework.Models
 {
-    public class TitleInfo
-    {
-        public string Name { get; set; }
-        public object Id { get; set; }
-    }
-
     public class Friend
     {
         public string GamerTag { get; set; }
@@ -19,5 +13,11 @@ namespace Framework.Models
         public string Presence { get; set; }
         public TitleInfo TitleInfo { get; set; }
         public string RichPresence { get; set; }
+    }
+
+    public class TitleInfo
+    {
+        public string Name { get; set; }
+        public object Id { get; set; }
     }
 }

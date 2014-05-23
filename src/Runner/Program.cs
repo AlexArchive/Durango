@@ -3,15 +3,12 @@ using Framework.Services;
 
 namespace Runner
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        private static void Main()
         {
-            var service = new AchievementsService("twerkteam@yopmail.com", "teamtwerk1");
-            var achievements = service.GetAchievements("xMurta", "1414793383");
-
-            Debugger.Break();
-
+            var service = new SearchService("twerkteam@yopmail.com", "teamtwerk1");
+            var something = service.Search("COD");
         }
     }
 }

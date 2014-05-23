@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.Tracing;
-using System.IO;
-using System.Linq;
-using Framework.Common;
+﻿using Framework.Common;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Framework.Services
 {
@@ -35,7 +32,7 @@ namespace Framework.Services
                     achievement.IsOffline = achievement.EarnDates["xMurta"].IsOffline;
                 }
 
-                ((JObject)achievement.EarnDates).Parent.Remove();
+                ((JObject) achievement.EarnDates).Parent.Remove();
             }
 
             return achievements.ToObject<IEnumerable<Achievement>>();
