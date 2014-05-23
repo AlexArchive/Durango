@@ -7,12 +7,11 @@ namespace Framework
     {
         public XboxClient()
         {
-            
+                
         }
-
-        public XboxClient(string username, string password)
+        public XboxClient(Credentials credentials)
         {
-            Connection connection = new Connection(username, password);
+            Connection connection = new Connection(credentials);
 
             Search = new SearchClient(connection);
             Friends = new FriendsClient(connection);

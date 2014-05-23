@@ -1,5 +1,4 @@
 ﻿using Framework;
-using System.Diagnostics;
 
 namespace Runner
 {
@@ -7,7 +6,7 @@ namespace Runner
     {
         private static void Main()
         {
-            var client = new XboxClient("twerkteddam@yopmail.com", "teamtwerk1");
+            var client = new XboxClient(new Credentials("twerkteam@yopmail.com", "teamtwerk1"));
             var friends = client.Friends.GetFriendsOf("xMurta");
         }
     }

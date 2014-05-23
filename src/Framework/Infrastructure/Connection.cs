@@ -8,9 +8,9 @@ namespace Framework.Infrastructure
         public Lazy<WebAgent> WebAgent { get; private set; }
         private readonly Authenticator _authenticator;
 
-        public Connection(string username, string password)
+        public Connection(Credentials credentials)
         {
-            _authenticator = new Authenticator(username, password);
+            _authenticator = new Authenticator(credentials);
             WebAgent = new Lazy<WebAgent>(ResolveWebAgent);
         }
 
