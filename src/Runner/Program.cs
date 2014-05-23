@@ -8,13 +8,11 @@ namespace Runner
     {
         private static void Main()
         {
-            var client = new ServiceClient("twerkteam@yopmail.com", "teamtwerk1");
+            var client = new XboxClient("twerkteam@yopmail.com", "teamtwerk1");
             //var searchResults = client.Search.SearchMarketplace("COD");
 
             Console.WriteLine("Authenticated.");
 
-            Console.WriteLine("Press Any Key to get Achievements");
-            Console.ReadKey();
 
             var achievements = client.Achievements.GetAchievements("xMurta", "1414793383");
             Debugger.Break();

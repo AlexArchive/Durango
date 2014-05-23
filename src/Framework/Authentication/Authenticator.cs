@@ -2,7 +2,7 @@
 using Framework.Common;
 using Framework.Infrastructure;
 
-namespace Framework
+namespace Framework.Authentication
 {
     public class Authenticator
     {

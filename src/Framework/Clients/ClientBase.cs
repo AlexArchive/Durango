@@ -1,10 +1,10 @@
 ﻿using Framework.Infrastructure;
 
-namespace Framework.Services
+namespace Framework.Clients
 {
-    public class ServiceBase
+    public abstract class ClientBase
     {
-        public ServiceBase(Connection connection)
+        protected ClientBase(Connection connection)
         {
             Connection = connection;
             WebAgent = connection.WebAgent;

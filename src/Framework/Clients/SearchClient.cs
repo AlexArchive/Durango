@@ -1,14 +1,14 @@
-﻿using Framework.Models;
+﻿using System.Collections.Generic;
+using Framework.Models;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 
-namespace Framework.Services
+namespace Framework.Clients
 {
-    public class SearchService : ServiceBase
+    public class SearchClient : ClientBase
     {
         private const string BaseAddress = "http://marketplace.xbox.com/en-GB/SiteSearch/xbox/?query=";
 
-        public SearchService(Connection connection) 
+        public SearchClient(Connection connection) 
             : base(connection)
         {
         }

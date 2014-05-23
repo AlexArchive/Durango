@@ -1,17 +1,17 @@
-﻿using Framework.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Framework.Common;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Framework.Services
+namespace Framework.Clients
 {
-    public class AchievementsService : ServiceBase
+    public class AchievementsClient : ClientBase
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Details?titleId=";
 
 
-        public AchievementsService(Connection connection) 
+        public AchievementsClient(Connection connection) 
             : base(connection)
         {
         }

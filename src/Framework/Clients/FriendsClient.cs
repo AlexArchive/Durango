@@ -1,17 +1,17 @@
-﻿using Framework.Common;
+﻿using System.Collections.Generic;
+using System.Net;
+using Framework.Common;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Net;
 
-namespace Framework.Services
+namespace Framework.Clients
 {
-    public class FriendsService : ServiceBase
+    public class FriendsClient : ClientBase
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Friends/List?Gamertag=";
 
 
-        public FriendsService(Connection connection) 
+        public FriendsClient(Connection connection) 
             : base(connection)
         {
         }

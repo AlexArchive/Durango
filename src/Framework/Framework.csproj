@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authenticator.cs" />
+    <Compile Include="Authentication\Authenticator.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Infrastructure\WebAgent.cs" />
@@ -57,13 +57,12 @@
     <Compile Include="Models\SearchEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClient.cs" />
-    <Compile Include="Services\AchievementsService.cs" />
-    <Compile Include="Services\FriendsService.cs" />
-    <Compile Include="Services\GamesService.cs" />
-    <Compile Include="Services\ProfileService.cs" />
-    <Compile Include="Services\SearchService.cs" />
-    <Compile Include="Services\ServiceBase.cs" />
-    <Compile Include="Services\ServiceBase1.cs" />
+    <Compile Include="Clients\AchievementsClient.cs" />
+    <Compile Include="Clients\FriendsClient.cs" />
+    <Compile Include="Clients\GamesClient.cs" />
+    <Compile Include="Clients\ProfileClient.cs" />
+    <Compile Include="Clients\SearchClient.cs" />
+    <Compile Include="Clients\ClientBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

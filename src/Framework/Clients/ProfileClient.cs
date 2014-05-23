@@ -1,15 +1,15 @@
-﻿using Framework.Common;
+﻿using System.Collections.Generic;
+using Framework.Common;
 using Framework.Models;
-using System.Collections.Generic;
 
-namespace Framework.Services
+namespace Framework.Clients
 {
-    public sealed class ProfileService : ServiceBase
+    public sealed class ProfileClient : ClientBase
     {
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
 
 
-        public ProfileService(Connection connection) 
+        public ProfileClient(Connection connection) 
             : base(connection)
         {
         }
