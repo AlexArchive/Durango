@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Framework.Infrastructure;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace Framework.Clients
 {

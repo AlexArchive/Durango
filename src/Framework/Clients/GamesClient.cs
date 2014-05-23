@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using Framework.Common;
+﻿using Framework.Common;
+using Framework.Infrastructure;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Framework.Clients
 {
     public class GamesClient : ClientBase
     {
-
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Summary?compareTo=";
 
         public GamesClient(Connection connection)
@@ -28,7 +28,7 @@ namespace Framework.Clients
             var response = WebAgent.Post(
                 requestUri,
                 "__RequestVerificationToken=" + token,
-                new WebHeaderCollection { { "X-Requested-With", "XMLHttpRequest" } }
+                new WebHeaderCollection {{"X-Requested-With", "XMLHttpRequest"}}
             );
 
             var content = response.GetResponseStream().ReadAsString();

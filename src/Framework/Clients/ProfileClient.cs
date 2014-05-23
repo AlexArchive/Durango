@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using Framework.Common;
+﻿using Framework.Common;
+using Framework.Infrastructure;
 using Framework.Models;
+using System.Collections.Generic;
 
 namespace Framework.Clients
 {
     public sealed class ProfileClient : ClientBase
     {
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
-
 
         public ProfileClient(Connection connection) 
             : base(connection)
@@ -52,13 +52,14 @@ namespace Framework.Clients
             return profile;
         }
 
-        private static readonly Dictionary<string, int> _starValues
-            = new Dictionary<string, int>  {
-                {"Star Empty", 0},
-                {"Star Quarter", 25},
-                {"Star Half", 50},
-                {"Star ThreeQuarter", 75},
-                {"Star Full", 100}
-            };
+        private static readonly Dictionary<string, int> _starValues =
+            new Dictionary<string, int> 
+        {
+            {"Star Empty", 0},
+            {"Star Quarter", 25},
+            {"Star Half", 50},
+            {"Star ThreeQuarter", 75},
+            {"Star Full", 100}
+        };
     }
 }

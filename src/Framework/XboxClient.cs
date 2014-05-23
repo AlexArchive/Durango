@@ -5,9 +5,14 @@ namespace Framework
 {
     public class XboxClient
     {
+        public XboxClient()
+        {
+            
+        }
+
         public XboxClient(string username, string password)
         {
-            Connection connection = new Connection(new WebAgent(), username, password);
+            Connection connection = new Connection(username, password);
 
             Search = new SearchClient(connection);
             Friends = new FriendsClient(connection);

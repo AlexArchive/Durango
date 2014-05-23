@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Authentication\Authenticator.cs" />
     <Compile Include="Common\Extensions.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Infrastructure\Connection.cs" />
     <Compile Include="Infrastructure\WebAgent.cs" />
     <Compile Include="Models\Achievement.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\SearchEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceClient.cs" />
+    <Compile Include="XboxClient.cs" />
     <Compile Include="Clients\AchievementsClient.cs" />
     <Compile Include="Clients\FriendsClient.cs" />
     <Compile Include="Clients\GamesClient.cs" />

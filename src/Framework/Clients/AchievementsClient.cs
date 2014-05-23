@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Framework.Common;
+﻿using Framework.Common;
+using Framework.Infrastructure;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Framework.Clients
 {
     public class AchievementsClient : ClientBase
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Details?titleId=";
-
 
         public AchievementsClient(Connection connection) 
             : base(connection)
@@ -19,16 +19,16 @@ namespace Framework.Clients
         public IEnumerable<Achievement> GetAchievements(string gamertag, string gameId)
         {
             var content = WebAgent.GetString(BaseAddress + gameId + "&compareto=" + gamertag);
-
-            var achievementsJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");
-            dynamic achievements = JObject.Parse(achievementsJson)["Achievements"];
+            var contentJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");
+            
+            dynamic achievements = JObject.Parse(contentJson)["Achievements"];
 
             foreach (var achievement in achievements)
             {
                 if (Enumerable.Any(achievement.EarnDates.Children()))
                 {
-                    achievement.EarnedOn = achievement.EarnDates["xMurta"].EarnedOn;
-                    achievement.IsOffline = achievement.EarnDates["xMurta"].IsOffline;
+                    achievement.EarnedOn = achievement.EarnDates[gamertag].EarnedOn;
+                    achievement.IsOffline = achievement.EarnDates[gamertag].IsOffline;
                 }
 
                 ((JObject) achievement.EarnDates).Parent.Remove();
@@ -36,6 +36,5 @@ namespace Framework.Clients
 
             return achievements.ToObject<IEnumerable<Achievement>>();
         }
-
     }
 }

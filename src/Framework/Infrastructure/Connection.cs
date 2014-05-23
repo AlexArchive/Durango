@@ -1,16 +1,24 @@
-﻿using Framework.Authentication;
+﻿using System;
+using Framework.Authentication;
 
 namespace Framework.Infrastructure
 {
     public class Connection
     {
-        public WebAgent WebAgent { get; private set; }
+        public Lazy<WebAgent> WebAgent { get; private set; }
+        private readonly Authenticator _authenticator;
 
-        public Connection(WebAgent webAgent, string username, string password)
+        public Connection(string username, string password)
         {
-            WebAgent = webAgent;
-            Authenticator authenticator = new Authenticator(username, password);
-            authenticator.Apply(WebAgent);
+            _authenticator = new Authenticator(username, password);
+            WebAgent = new Lazy<WebAgent>(ResolveWebAgent);
+        }
+
+        private WebAgent ResolveWebAgent()
+        {
+            var webAgent = new WebAgent();
+            _authenticator.Apply(webAgent);
+            return webAgent;
         }
     }
 }
