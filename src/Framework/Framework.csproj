@@ -47,11 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AnonymousAuthenticationHandler.cs" />
+    <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\Authenticator.cs" />
     <Compile Include="Authentication\IAuthenticationHandler.cs" />
     <Compile Include="Authentication\StandardAuthenticator.cs" />
     <Compile Include="Common\Extensions.cs" />
-    <Compile Include="Credentials.cs" />
+    <Compile Include="Infrastructure\Credentials.cs" />
     <Compile Include="Infrastructure\Connection.cs" />
     <Compile Include="Infrastructure\WebAgent.cs" />
     <Compile Include="Models\Achievement.cs" />

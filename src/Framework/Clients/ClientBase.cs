@@ -1,4 +1,5 @@
-﻿using Framework.Infrastructure;
+﻿using System.Security.Authentication;
+using Framework.Infrastructure;
 
 namespace Framework.Clients
 {
@@ -14,6 +15,12 @@ namespace Framework.Clients
         public WebAgent WebAgent
         {
             get { return Connection.WebAgent.Value; }
+        }
+
+        protected void EnsureAuthenticated()
+        {
+            if (!Connection.Authenticated)
+                throw new AuthenticationException();
         }
     }
 }

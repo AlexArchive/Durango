@@ -6,7 +6,14 @@ namespace Framework.Infrastructure
     public class Connection
     {
         public Lazy<WebAgent> WebAgent { get; private set; }
+        public bool Authenticated { get; private set; }
         private readonly Authenticator _authenticator;
+
+        public Connection() 
+            : this (Credentials.Annonymous)
+        {
+            
+        }
 
         public Connection(Credentials credentials)
         {
@@ -18,6 +25,7 @@ namespace Framework.Infrastructure
         {
             var webAgent = new WebAgent();
             _authenticator.Apply(webAgent);
+            Authenticated = true;
             return webAgent;
         }
     }

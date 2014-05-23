@@ -6,9 +6,11 @@ namespace Framework
     public class XboxClient
     {
         public XboxClient()
+            : this (Credentials.Annonymous)
         {
                 
         }
+
         public XboxClient(Credentials credentials)
         {
             Connection connection = new Connection(credentials);

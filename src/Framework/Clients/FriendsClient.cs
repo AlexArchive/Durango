@@ -18,6 +18,8 @@ namespace Framework.Clients
 
         public IEnumerable<Friend> GetFriendsOf(string gamertag)
         {
+            EnsureAuthenticated();
+
             var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 

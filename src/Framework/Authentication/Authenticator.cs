@@ -1,4 +1,5 @@
-﻿using Framework.Infrastructure;
+﻿using System.Collections.Generic;
+using Framework.Infrastructure;
 
 namespace Framework.Authentication
 {
@@ -12,8 +13,15 @@ namespace Framework.Authentication
 
         public void Apply(WebAgent webAgent)
         {
-            IAuthenticationHandler authenticationHandler = new AnonymousAuthenticationHandler();
-            authenticationHandler.Authenticate(webAgent, _credentials);
+            IAuthenticationHandler authenticator = authenticators[_credentials.AuthenticationType];
+            authenticator.Authenticate(webAgent, _credentials);
         }
+
+        private readonly Dictionary<AuthenticationType, IAuthenticationHandler> authenticators =
+            new Dictionary<AuthenticationType, IAuthenticationHandler>
+                {
+                    { AuthenticationType.Anonymous, new AnonymousAuthenticationHandler() },
+                    { AuthenticationType.Standard, new StandardAuthenticator() },
+                };
     }
 }
