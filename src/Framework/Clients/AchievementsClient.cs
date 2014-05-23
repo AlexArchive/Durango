@@ -20,20 +20,23 @@ namespace Framework.Clients
         {
             EnsureAuthenticated();
 
+            gamertag = gamertag.ToLower();
+
             var content = WebAgent.GetString(BaseAddress + gameId + "&compareto=" + gamertag);
             var contentJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");
-            
-            dynamic achievements = JObject.Parse(contentJson)["Achievements"];
+            contentJson = contentJson.ToLower();
+
+            dynamic achievements = JObject.Parse(contentJson)["achievements"];
 
             foreach (var achievement in achievements)
             {
-                if (Enumerable.Any(achievement.EarnDates.Children()))
+                if (Enumerable.Any(achievement.earndates.Children()))
                 {
-                    achievement.EarnedOn = achievement.EarnDates[gamertag].EarnedOn;
-                    achievement.IsOffline = achievement.EarnDates[gamertag].IsOffline;
+                    achievement.earnedon = achievement.earndates[gamertag].earnedon;
+                    achievement.isoffline = achievement.earndates[gamertag].isoffline;
                 }
 
-                ((JObject) achievement.EarnDates).Parent.Remove();
+                ((JObject)achievement.earndates).Parent.Remove();
             }
 
             return achievements.ToObject<IEnumerable<Achievement>>();

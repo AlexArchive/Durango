@@ -13,7 +13,7 @@ namespace Framework.Authentication
             try
             {
                 var content = webAgent.GetString(
-                    "https://live.xbox.com/Accofunt/Signin?returnUrl=http%3a%2f%2fwww.xbox.com%2fen-US%2f");
+                    "https://live.xbox.com/Account/Signin?returnUrl=http%3a%2f%2fwww.xbox.com%2fen-US%2f");
 
                 var postUrl = content.ParseBetween("urlPost:'", "'");
                 var ppftVal = content.ParseBetween("name=\"PPFT\" id=\"i0327\" value=\"", "\"");

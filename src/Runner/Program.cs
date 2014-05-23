@@ -6,8 +6,8 @@ namespace Runner
     {
         private static void Main()
         {
-            var client = new XboxClient("x", "2");
-            var friends = client.Friends.GetFriendsOf("xMurta");
+            var client = new XboxClient("twerkteam@yopmail.com", "teamtwerk1");
+            var games = client.Achievements.GetAchievements("xMurta", "1096157387");
 
         }
     }

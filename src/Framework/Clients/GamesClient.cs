@@ -20,6 +20,8 @@ namespace Framework.Clients
         {
             EnsureAuthenticated();
 
+            gamertag = gamertag.ToLower();
+
             var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 
@@ -34,17 +36,18 @@ namespace Framework.Clients
             );
 
             var content = response.GetResponseStream().ReadAsString();
+            content = content.ToLower();
 
-            dynamic games = JObject.Parse(content)["Data"]["Games"];
+            dynamic games = JObject.Parse(content)["data"]["games"];
             foreach (var game in games)
             {
                 // remove any notion of the comparate  
-                game.Progress.Replace(
+                game.progress.Replace(
                      JObject.FromObject(new
                      {
-                         game.Progress[gamertag].Score,
-                         game.Progress[gamertag].Achievements,
-                         game.Progress[gamertag].LastPlayed
+                         game.progress[gamertag].score,
+                         game.progress[gamertag].achievements,
+                         game.progress[gamertag].lastplayed
                      }));
             }
 
