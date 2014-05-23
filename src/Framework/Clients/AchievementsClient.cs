@@ -18,10 +18,10 @@ namespace Framework.Clients
 
         public IEnumerable<Achievement> GetAchievements(string gamertag, string gameId)
         {
+            EnsureAuthenticated();
+
             var content = WebAgent.GetString(BaseAddress + gameId + "&compareto=" + gamertag);
             var contentJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");
-            
-            EnsureAuthenticated();
             
             dynamic achievements = JObject.Parse(contentJson)["Achievements"];
 

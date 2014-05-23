@@ -5,20 +5,19 @@ namespace Framework
 {
     public class XboxClient
     {
+        public XboxClient() 
+            : this (new Connection(Credentials.Annonymous))
+        {
+        }
+
         public XboxClient(string username, string password)
-            : this (new Credentials(username, password))
+            : this (new Connection(new Credentials(username, password)))
         {
+            
         }
 
-        public XboxClient()
-            : this(Credentials.Annonymous)
+        public XboxClient(Connection connection)
         {
-        }
-
-        public XboxClient(Credentials credentials)
-        {
-            Connection connection = new Connection(credentials);
-
             Profile = new ProfileClient(connection);
             Friends = new FriendsClient(connection);
             Games = new GamesClient(connection);
