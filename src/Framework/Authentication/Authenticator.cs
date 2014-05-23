@@ -12,7 +12,7 @@ namespace Framework.Authentication
 
         public void Apply(WebAgent webAgent)
         {
-            IAuthenticationHandler authenticationHandler = new StandardAuthenticator();
+            IAuthenticationHandler authenticationHandler = new AnonymousAuthenticationHandler();
             authenticationHandler.Authenticate(webAgent, _credentials);
         }
     }
