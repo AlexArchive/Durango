@@ -11,7 +11,7 @@ namespace Framework.Clients
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Summary?compareTo=";
 
-        public GamesClient(Connection connection)
+        internal GamesClient(Connection connection)
             : base(connection)
         {
         }

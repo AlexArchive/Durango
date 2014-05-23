@@ -2,7 +2,7 @@
 
 namespace Framework.Authentication
 {
-    public class AnonymousAuthenticationHandler : IAuthenticationHandler
+    internal class AnonymousAuthenticator : IAuthenticationHandler
     {
         public void Authenticate(WebAgent webAgent, Credentials credentials)
         {

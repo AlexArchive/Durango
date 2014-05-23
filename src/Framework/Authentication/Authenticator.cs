@@ -3,7 +3,7 @@ using Framework.Infrastructure;
 
 namespace Framework.Authentication
 {
-    public class Authenticator
+    internal class Authenticator
     {
         private readonly Credentials _credentials;
         public Authenticator(Credentials credentials)
@@ -20,7 +20,7 @@ namespace Framework.Authentication
         private readonly Dictionary<AuthenticationType, IAuthenticationHandler> authenticators =
             new Dictionary<AuthenticationType, IAuthenticationHandler>
                 {
-                    { AuthenticationType.Anonymous, new AnonymousAuthenticationHandler() },
+                    { AuthenticationType.Anonymous, new AnonymousAuthenticator() },
                     { AuthenticationType.Standard, new StandardAuthenticator() },
                 };
     }

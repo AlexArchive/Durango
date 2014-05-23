@@ -9,7 +9,7 @@ namespace Framework.Clients
     {
         private const string BaseAddress = "http://marketplace.xbox.com/en-GB/SiteSearch/xbox/?query=";
 
-        public SearchClient(Connection connection) 
+        internal SearchClient(Connection connection) 
             : base(connection)
         {
         }

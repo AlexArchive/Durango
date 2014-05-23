@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\AnonymousAuthenticationHandler.cs" />
+    <Compile Include="Authentication\AnonymousAuthenticator.cs" />
     <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\Authenticator.cs" />
     <Compile Include="Authentication\IAuthenticationHandler.cs" />

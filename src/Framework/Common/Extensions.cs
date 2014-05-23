@@ -7,9 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace Framework.Common
 {
-    public static class StreamExtensions
+    internal static class StreamExtensions
     {
-        public static string ReadAsString(this Stream stream)
+        internal static string ReadAsString(this Stream stream)
         {
             // TODO:
             //  Consideration for encoding.
@@ -19,9 +19,9 @@ namespace Framework.Common
         }
     }
 
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        public static string ParseBetween(this string input, string leftWord, string rightWord)
+        internal static string ParseBetween(this string input, string leftWord, string rightWord)
         {
             leftWord = Regex.Escape(leftWord);
             rightWord = Regex.Escape(rightWord);
@@ -32,9 +32,9 @@ namespace Framework.Common
         }
     }
 
-    public static class WebAgentExtensions
+    internal static class WebAgentExtensions
     {
-        public static HtmlDocument DownloadDocumentNode(this WebAgent webAgent, string requestUri)
+        internal static HtmlDocument DownloadDocumentNode(this WebAgent webAgent, string requestUri)
         {
             var pageData = webAgent.GetString(requestUri);
 
@@ -46,9 +46,9 @@ namespace Framework.Common
     }
 
 #if DEBUG
-    public static class ObjectExtensions
+    internal static class ObjectExtensions
     {
-        public static string ToStringAutomatic<T>(this T obj)
+        internal static string ToStringAutomatic<T>(this T obj)
         {
             const string Seperator = "\r\n";
             const BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public;

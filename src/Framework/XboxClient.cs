@@ -5,6 +5,11 @@ namespace Framework
 {
     public class XboxClient
     {
+        public XboxClient(string username, string password)
+            : this (new Credentials(username, password))
+        {
+        }
+
         public XboxClient()
             : this(Credentials.Annonymous)
         {

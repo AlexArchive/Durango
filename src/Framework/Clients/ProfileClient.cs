@@ -9,7 +9,7 @@ namespace Framework.Clients
     {
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
 
-        public ProfileClient(Connection connection) 
+        internal ProfileClient(Connection connection) 
             : base(connection)
         {
         }

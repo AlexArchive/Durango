@@ -10,9 +10,9 @@ namespace Framework.Clients
             Connection = connection;
         }
 
-        public Connection Connection { get; private set; }
+        protected Connection Connection { get; private set; }
 
-        public WebAgent WebAgent
+        protected WebAgent WebAgent
         {
             get { return Connection.WebAgent.Value; }
         }

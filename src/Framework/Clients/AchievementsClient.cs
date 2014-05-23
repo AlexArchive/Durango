@@ -11,7 +11,7 @@ namespace Framework.Clients
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Activity/Details?titleId=";
 
-        public AchievementsClient(Connection connection) 
+        internal AchievementsClient(Connection connection) 
             : base(connection)
         {
         }

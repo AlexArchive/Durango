@@ -11,7 +11,7 @@ namespace Framework.Clients
     {
         private const string BaseAddress = "https://live.xbox.com/en-US/Friends/List?Gamertag=";
 
-        public FriendsClient(Connection connection) 
+        internal FriendsClient(Connection connection) 
             : base(connection)
         {
         }

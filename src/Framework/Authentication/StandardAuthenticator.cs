@@ -5,7 +5,7 @@ using Framework.Infrastructure;
 
 namespace Framework.Authentication
 {
-    public class StandardAuthenticator : IAuthenticationHandler
+    internal class StandardAuthenticator : IAuthenticationHandler
     {
         public void Authenticate(WebAgent webAgent, Credentials credentials)
         {
