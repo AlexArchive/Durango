@@ -13,10 +13,10 @@ namespace Framework
         public XboxClient(string username, string password)
             : this (new Connection(new Credentials(username, password)))
         {
-            
+
         }
 
-        public XboxClient(Connection connection)
+        private XboxClient(Connection connection)
         {
             Profile = new ProfileClient(connection);
             Friends = new FriendsClient(connection);

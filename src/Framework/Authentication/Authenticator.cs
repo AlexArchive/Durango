@@ -5,6 +5,7 @@ namespace Framework.Authentication
     internal class Authenticator
     {
         private readonly Credentials _credentials;
+
         public Authenticator(Credentials credentials)
         {
             _credentials = credentials;
