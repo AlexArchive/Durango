@@ -13,7 +13,7 @@ namespace Framework.Infrastructure
 
         public WebAgent()
         {
-            ServicePointManager.DefaultConnectionLimit = 10;
+            ServicePointManager.DefaultConnectionLimit = 200;
         }
 
         public HttpWebResponse Get(string requestUri)
