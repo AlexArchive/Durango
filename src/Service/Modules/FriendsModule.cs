@@ -8,7 +8,7 @@ namespace Service.Modules
         {
             Get["/profile/{gamertag}/friends"] = context =>
             {
-                var friends = _xboxClient.Friends.GetFriendsOf((string) context.gamertag);
+                var friends = _xboxClient.Friends.GetFriends((string) context.gamertag);
                 return Response.AsJson(friends);
             };
         }
