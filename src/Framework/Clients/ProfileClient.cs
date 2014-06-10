@@ -1,5 +1,4 @@
-﻿using Framework.Common;
-using Framework.Infrastructure;
+﻿using Framework.Infrastructure;
 using Framework.Models;
 using System.Collections.Generic;
 
@@ -16,8 +15,11 @@ namespace Framework.Clients
 
         public Profile GetProfile(string gamertag)
         {
-            var document = WebAgent.DownloadDocumentNode(BaseAddress + gamertag);
+            var document = DownloadDocument(BaseAddress + gamertag);
             var docNode = document.DocumentNode;
+
+            if (docNode.InnerHtml.Contains("Not found</title>"))
+                return null;
 
             var profile = new Profile { Gamertag = gamertag };
 

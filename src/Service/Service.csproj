@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Error.cs" />
+    <Compile Include="ErrorExtensions.cs" />
     <Compile Include="JsonNetSerializer.cs" />
     <Compile Include="Modules\AchievementsModule.cs" />
     <Compile Include="Modules\FriendsModule.cs" />
@@ -83,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\James.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,8 +21,7 @@ namespace Framework.Clients
             EnsureAuthenticated();
 
             gamertag = gamertag.ToLower();
-
-            var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
+            var document = DownloadDocument("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 
             var token =
@@ -51,7 +50,12 @@ namespace Framework.Clients
                      }));
             }
 
-            return games.ToObject<IEnumerable<Game>>();
+            games = games.ToObject<IEnumerable<Game>>();
+            if (games.Count == 0)
+            {
+                return null;
+            }
+            return games;
         }
     }
 }

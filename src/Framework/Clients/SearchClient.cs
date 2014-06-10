@@ -1,4 +1,6 @@
-﻿using Framework.Infrastructure;
+﻿using System.Linq;
+using System.Xml;
+using Framework.Infrastructure;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
@@ -18,8 +20,13 @@ namespace Framework.Clients
         {
             var content = WebAgent.GetString(BaseAddress + query);
 
-            var entries = JObject.Parse(content)["entries"];
-            return entries.ToObject<IEnumerable<SearchEntry>>();
+            var entriesJson = JObject.Parse(content)["entries"];
+            var entries = entriesJson.ToObject<IEnumerable<SearchEntry>>();
+
+            if (!entries.Any())
+                return null;
+
+            return entries;
         }
     }
 }

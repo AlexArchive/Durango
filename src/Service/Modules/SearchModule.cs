@@ -1,11 +1,19 @@
-﻿namespace Service.Modules
+﻿using Nancy;
+
+namespace Service.Modules
 {
     public class SearchModule : ModuleBase
     {
         public SearchModule()
         {
-            Get["/search/{searchQuery}"] = context => 
-                XboxClient.Search.SearchMarketplace((string) context.searchQuery);
+            Get["/search/{searchQuery}"] = context =>
+            {
+                var searchResults = XboxClient.Search.SearchMarketplace(context.searchQuery);
+
+                if (searchResults != null) return searchResults;
+
+                return this.ErrorMessage(HttpStatusCode.OK, "No Results.");
+            };
         }
     }
 }

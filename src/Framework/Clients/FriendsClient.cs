@@ -1,4 +1,5 @@
-﻿using Framework.Common;
+﻿using System.Diagnostics;
+using Framework.Common;
 using Framework.Infrastructure;
 using Framework.Models;
 using Newtonsoft.Json.Linq;
@@ -20,7 +21,7 @@ namespace Framework.Clients
         {
             EnsureAuthenticated();
 
-            var document = WebAgent.DownloadDocumentNode("https://live.xbox.com/en-GB/Friends");
+            var document = DownloadDocument("https://live.xbox.com/en-GB/Friends");
             var docNode = document.DocumentNode;
 
             var token =
@@ -35,7 +36,12 @@ namespace Framework.Clients
 
             var content = response.GetResponseStream().ReadAsString();
 
-            var friendsNode = JObject.Parse(content)["Data"]["Friends"];
+            var root = JObject.Parse(content);
+
+            if (root["Success"].ToObject<bool>() == false)
+                return null;
+
+            var friendsNode = root["Data"]["Friends"];
             var friends = friendsNode.ToObject<IEnumerable<Friend>>();
 
             return friends;

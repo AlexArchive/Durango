@@ -1,4 +1,6 @@
-﻿using Framework.Infrastructure;
+﻿using System;
+using System.Net;
+using Framework.Infrastructure;
 using HtmlAgilityPack;
 using System.IO;
 using System.Linq;
@@ -32,16 +34,18 @@ namespace Framework.Common
         }
     }
 
-    internal static class WebAgentExtensions
+    public static class WebRequestExtensions
     {
-        internal static HtmlDocument DownloadDocumentNode(this WebAgent webAgent, string requestUri)
+        public static WebResponse GetResponseWithoutException(this WebRequest request)
         {
-            var pageData = webAgent.GetString(requestUri);
-
-            var document = new HtmlDocument();
-            document.LoadHtml(pageData);
-
-            return document;
+            try
+            {
+                return request.GetResponse();
+            }
+            catch (WebException e)
+            {
+                return e.Response;
+            }
         }
     }
 

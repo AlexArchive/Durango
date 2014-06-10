@@ -26,6 +26,11 @@ namespace Framework.Clients
             var contentJson = content.ParseBetween("broker.publish(routes.activity.details.load, ", ");");
             contentJson = contentJson.ToLower();
 
+            if (contentJson == "")
+            {
+                return null;
+            }
+
             dynamic achievements = JObject.Parse(contentJson)["achievements"];
 
             foreach (var achievement in achievements)

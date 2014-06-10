@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using Framework.Authentication;
 using Framework.Infrastructure;
+using HtmlAgilityPack;
 
 namespace Framework.Clients
 {
@@ -25,6 +26,14 @@ namespace Framework.Clients
                 throw new AuthenticationException(
                     "you must be authenticated to carry out this operation.");
             }
+        }
+
+        protected HtmlDocument DownloadDocument(string requestUri)
+        {
+            var pageData = WebAgent.GetString(requestUri);
+            var document = new HtmlDocument();
+            document.LoadHtml(pageData);
+            return document;
         }
     }
 }

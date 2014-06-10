@@ -38,10 +38,11 @@ namespace Framework.Infrastructure
         {
             var request = CreateAndPrepareWebRequest(method, requestUri, formContent, headers);
 
-            var response = (HttpWebResponse)request.GetResponse();
+            var response = (HttpWebResponse)request.GetResponseWithoutException();
             ExtractResponseCookies(response);
 
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.Redirect ||
+                response.StatusCode == HttpStatusCode.MovedPermanently) 
             {
                 // handle redirect
                 requestUri = response.Headers["Location"];
