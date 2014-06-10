@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Error.cs" />
     <Compile Include="JsonNetSerializer.cs" />
     <Compile Include="Modules\AchievementsModule.cs" />
     <Compile Include="Modules\FriendsModule.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Modules\ModuleBase.cs" />
     <Compile Include="Modules\ProfileModule.cs" />
     <Compile Include="Modules\SearchModule.cs" />
+    <Compile Include="ErrorStatusCodeHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
