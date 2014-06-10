@@ -1,12 +1,19 @@
 ﻿using Nancy;
+using Nancy.Bootstrapper;
+using Nancy.Responses.Negotiation;
 
 namespace Service
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        public Bootstrapper()
+        protected override NancyInternalConfiguration InternalConfiguration
         {
-            StaticConfiguration.DisableErrorTraces = true;
-        }         
+            get
+            {
+                // remove view processor from the content-negotation pipeline.
+                return NancyInternalConfiguration.WithOverrides(
+                    x => x.ResponseProcessors.Remove(typeof(ViewProcessor)));
+            }
+        }
     }
 }

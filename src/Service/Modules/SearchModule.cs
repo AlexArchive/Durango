@@ -1,16 +1,11 @@
-﻿using Nancy;
-
-namespace Service.Modules
+﻿namespace Service.Modules
 {
     public class SearchModule : ModuleBase
     {
         public SearchModule()
         {
-            Get["/search/{searchQuery}"] = context =>
-            {
-                var searchEntries = _xboxClient.Search.SearchMarketplace((string) context.searchQuery);
-                return Response.AsJson(searchEntries);
-            };
+            Get["/search/{searchQuery}"] = context => 
+                XboxClient.Search.SearchMarketplace((string) context.searchQuery);
         }
     }
 }

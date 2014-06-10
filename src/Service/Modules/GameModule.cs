@@ -1,16 +1,11 @@
-﻿using Nancy;
-
-namespace Service.Modules
+﻿namespace Service.Modules
 {
     public class GameModule : ModuleBase
     {
         public GameModule()
         {
-            Get["/profile/{gamertag}/games"] = context =>
-            {
-                var games = _xboxClient.Games.GetGames((string) context.gamertag);
-                return Response.AsJson(games);
-            };
+            Get["/profile/{gamertag}/games"] = context => 
+                XboxClient.Games.GetGames((string) context.gamertag);
         }
     }
 }

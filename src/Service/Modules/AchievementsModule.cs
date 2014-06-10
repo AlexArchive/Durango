@@ -1,21 +1,11 @@
-﻿using Nancy;
-
-namespace Service.Modules
+﻿namespace Service.Modules
 {
     public class AchievementsModule : ModuleBase
     {
         public AchievementsModule()
         {
-            Get["/profile/{gamertag}/games/{gameId}/achievements"] = context =>
-            {
-                var achievements = 
-                    _xboxClient.Achievements.GetAchievements(
-                        (string) context.gamertag, (string) context.gameId);
-
-                return Response.AsJson(achievements);
-            };
+            Get["/profile/{gamertag}/games/{gameId}/achievements"] = context => 
+                XboxClient.Achievements.GetAchievements(context.gamertag, context.gameId);
         }
     }
 }
-
-//1414793383
