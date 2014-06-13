@@ -10,9 +10,13 @@ namespace Service
         {
             get
             {
-                // remove view processor from the content-negotation pipeline.
+                // remove unwanted processors from the content-negotation pipeline.
                 return NancyInternalConfiguration.WithOverrides(
-                    x => x.ResponseProcessors.Remove(typeof(ViewProcessor)));
+                    x =>
+                    {
+                        x.ResponseProcessors.Remove(typeof (ViewProcessor));
+                        x.ResponseProcessors.Remove(typeof (XmlProcessor));
+                    });
             }
         }
     }
