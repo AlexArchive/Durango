@@ -80,6 +80,7 @@
     <Compile Include="Modules\ProfileModule.cs" />
     <Compile Include="Modules\SearchModule.cs" />
     <Compile Include="ErrorStatusCodeHandler.cs" />
+    <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

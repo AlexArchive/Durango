@@ -1,0 +1,4 @@
+error message should describe that that profile might exist but the particular data (friends or games) is private.
+
+achievements module should return a bad request error if the collection returned is null or maybe the client should
+just return null.

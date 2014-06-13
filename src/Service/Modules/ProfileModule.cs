@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using Framework.Models;
+using Nancy;
 
 namespace Service.Modules
 {
@@ -8,11 +9,17 @@ namespace Service.Modules
         {
             Get["/profile/{gamertag}"] = context =>
             {
-                var profile = XboxClient.Profile.GetProfile(context.gamertag);
-                
-                if (profile != null) return profile;
-                
-                return this.ErrorMessage(HttpStatusCode.BadRequest, "Profile does not exist.");
+                Profile profile = XboxClient.Profile.GetProfile(context.Gamertag);
+
+                if (profile == null)
+                    return this.ErrorMessage(HttpStatusCode.BadRequest, "Profile does not exist.");
+
+                // resource linking
+                string baseUri = Request.BaseUri();
+                dynamic profileDto = profile.ToExpandoObject();
+                profileDto.Friends = new { Link = baseUri + "/profile/" + context.Gamertag + "/friends" };
+                profileDto.Games = new { Link = baseUri + "/profile/" + context.Gamertag + "/games" };
+                return profileDto;
             };
         }
     }

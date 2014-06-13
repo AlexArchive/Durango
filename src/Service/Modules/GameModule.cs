@@ -1,4 +1,7 @@
-﻿using Nancy;
+﻿using Framework.Models;
+using Nancy;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Service.Modules
 {
@@ -8,11 +11,22 @@ namespace Service.Modules
         {
             Get["/profile/{gamertag}/games"] = context =>
             {
-                var games =  XboxClient.Games.GetGames((string) context.gamertag);
+                IEnumerable<Game> games = XboxClient.Games.GetGames(context.gamertag);
 
-                if (games != null) return games;
+                if (games == null) 
+                    return this.ErrorMessage(HttpStatusCode.BadRequest, "Profile does not exist.");
 
-                return this.ErrorMessage(HttpStatusCode.BadRequest, "Profile does not exist.");
+                // resource linking
+                string baseUri = Request.BaseUri();
+                IEnumerable<dynamic> gamesDto = games.Select(game =>
+                {
+                    var gameDto = game.ToExpandoObject();
+                    gameDto.Achievments = new {
+                        Link = baseUri + "/profile/" + context.gamertag + "/games/" + gameDto.Id + "/achievements"
+                    };
+                    return gameDto;
+                });
+                return gamesDto;
             };
         }
     }
