@@ -50,6 +50,12 @@ namespace Durango.Clients
             profile.Avatar.SmallGamerTile = docNode.SelectSingleNode("//img[@class='gamerpic']").GetAttributeValue("src", null);
             profile.Avatar.SmallGamerTile = profile.Avatar.SmallGamerTile.Replace("https://avatar-ssl", "http://avatar");
 
+            var badgeNode = docNode.SelectSingleNode("//div[@class='location']");
+            profile.LaunchTeams = new LaunchTeams();
+            profile.LaunchTeams.Xbox360 = badgeNode.SelectSingleNode("//img[@title='Xbox 360']") != null;
+            profile.LaunchTeams.NXE = badgeNode.SelectSingleNode("//img[@title='NXE']") != null;
+            profile.LaunchTeams.Kinect = badgeNode.SelectSingleNode("//img[@title='Kinect']") != null;
+
             return profile;
         }
 

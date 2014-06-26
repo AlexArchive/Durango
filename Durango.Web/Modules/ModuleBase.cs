@@ -8,7 +8,7 @@ namespace Durango.Web.Modules
 
         static ModuleBase()
         {
-            XboxClient = new XboxClient("twerkteam@yopmail.com", "teamtwerk1");
+            XboxClient = new XboxClient(/*"twerkteam@yopmail.com", "teamtwerk1"*/);
         }
     }
 }
