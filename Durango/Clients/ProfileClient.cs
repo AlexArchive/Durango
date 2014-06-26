@@ -8,7 +8,7 @@ namespace Durango.Clients
     {
         private const string BaseAddress = "http://live.xbox.com/en-US/Profile?gamertag=";
 
-        internal ProfileClient(Connection connection) 
+        internal ProfileClient(Connection connection)
             : base(connection)
         {
         }
@@ -44,11 +44,13 @@ namespace Durango.Clients
             }
 
             profile.Avatar = new Avatar();
-            profile.Avatar.Body = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatar-body.png", gamertag);
-            profile.Avatar.SmallGamerpic = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-s.png", gamertag);
-            profile.Avatar.LargeGamerpic = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-l.png", gamertag);
-            profile.Avatar.SmallGamerTile = docNode.SelectSingleNode("//img[@class='gamerpic']").GetAttributeValue("src", null);
-            profile.Avatar.SmallGamerTile = profile.Avatar.SmallGamerTile.Replace("https://avatar-ssl", "http://avatar");
+
+            profile.Avatar.Body = "http://avatar.xboxlive.com/avatar/" + gamertag + "/avatar-body.png";
+            profile.Avatar.SmallGamerpic = "http://avatar.xboxlive.com/avatar/" + gamertag + "/avatarpic-s.png";
+            profile.Avatar.LargeGamerpic = "http://avatar.xboxlive.com/avatar/" + gamertag + "/avatarpic-l.png";
+
+            profile.Avatar.GamerTile = docNode.SelectSingleNode("//img[@class='gamerpic']").GetAttributeValue("src", null);
+            profile.Avatar.GamerTile = profile.Avatar.GamerTile.Replace("https://avatar-ssl", "http://avatar");
 
             var badgeNode = docNode.SelectSingleNode("//div[@class='location']");
             profile.LaunchTeams = new LaunchTeams();
