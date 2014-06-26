@@ -44,12 +44,11 @@ namespace Durango.Clients
             }
 
             profile.Avatar = new Avatar();
-            profile.Avatar.Full = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatar-body.png", gamertag);
-            profile.Avatar.Small = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-s.png", gamertag);
-            profile.Avatar.Large = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-l.png", gamertag);
-
-            profile.Avatar.Tile = docNode.SelectSingleNode("//img[@class='gamerpic']").GetAttributeValue("src", null);
-            profile.Avatar.Tile = profile.Avatar.Tile.Replace("https://avatar-ssl", "http://avatar");
+            profile.Avatar.Body = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatar-body.png", gamertag);
+            profile.Avatar.SmallGamerpic = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-s.png", gamertag);
+            profile.Avatar.LargeGamerpic = string.Format("http://avatar.xboxlive.com/avatar/{0}/avatarpic-l.png", gamertag);
+            profile.Avatar.SmallGamerTile = docNode.SelectSingleNode("//img[@class='gamerpic']").GetAttributeValue("src", null);
+            profile.Avatar.SmallGamerTile = profile.Avatar.SmallGamerTile.Replace("https://avatar-ssl", "http://avatar");
 
             return profile;
         }
