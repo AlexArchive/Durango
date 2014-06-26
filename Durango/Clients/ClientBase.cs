@@ -31,6 +31,7 @@ namespace Durango.Clients
         protected HtmlDocument DownloadDocument(string requestUri)
         {
             var pageData = WebAgent.GetString(requestUri);
+            pageData = HtmlEntity.DeEntitize(pageData);
             var document = new HtmlDocument();
             document.LoadHtml(pageData);
             return document;
