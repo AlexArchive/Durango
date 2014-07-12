@@ -6,6 +6,7 @@ namespace Durango.Authentication
     {
         public void Authenticate(WebAgent webAgent, Credentials credentials)
         {
+            // null object pattern.
         }
     }
 }
